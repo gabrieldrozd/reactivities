@@ -17,4 +17,9 @@
         <ProjectReference Include="..\Application\Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="reactivities.db-shm" />
+      <None Remove="reactivities.db-wal" />
+    </ItemGroup>
+
 </Project>
