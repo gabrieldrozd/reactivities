@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Application.Core;
+using Domain;
 using MediatR;
 using Persistence;
 
@@ -6,12 +7,12 @@ namespace Application.Features.Activities.Queries;
 
 public class Details
 {
-    public class Query : IRequest<Activity>
+    public class Query : IRequest<Result<Activity>>
     {
         public Guid Id { get; set; }
     }
     
-    public class Handler : IRequestHandler<Query, Activity>
+    public class Handler : IRequestHandler<Query, Result<Activity>>
     {
         private readonly DataDbContext _context;
 
@@ -20,9 +21,13 @@ public class Details
             _context = context;
         }
 
-        public async Task<Activity> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<Result<Activity>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return await _context.Activities.FindAsync(request.Id);
+            var activity = await _context.Activities.FindAsync(request.Id);
+
+            var result = Result<Activity>.Success(activity);
+
+            return result;
         }
     }
 }

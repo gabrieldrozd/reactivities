@@ -43,4 +43,10 @@ body {
 
 /*end home page styles*/
 
+.reload-button {
+	float: right;
+	background-color: white !important;
+	margin-top: 20px !important;
+	width: 55px;
+}
 
