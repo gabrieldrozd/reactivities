@@ -1,32 +1,26 @@
-import React from 'react';
-import { Activity } from '../../../app/modules/activity';
-import {Button, Item, Label, Segment} from "semantic-ui-react";
+import React, {Fragment} from 'react';
+import {Button, Header, Icon} from "semantic-ui-react";
+import {useStore} from "../../../app/stores/store";
+import {observer} from "mobx-react-lite";
+import ActivityListItem from "./ActivityListItem";
 
-interface Props {
-    activities: Activity[];
-}
+export default observer(function ActivityList() {
+    const {activityStore} = useStore();
+    const {groupedActivities} = activityStore;
 
-export default function ActivityList({activities}: Props) {
     return (
-        <Segment>
-            <Item.Group divided>
-                {activities.map(activity => (
-                    <Item key={activity.id}>
-                        <Item.Content>
-                            <Item.Header as='a'>{activity.title}</Item.Header>
-                            <Item.Meta>{activity.date}</Item.Meta>
-                            <Item.Description>
-                                <div>{activity.description}</div>
-                                <div>{activity.city}, {activity.venue}</div>
-                            </Item.Description>
-                            <Item.Extra>
-                                <Button floated='right' content='View' color='blue' />
-                                <Label basic content={activity.category}/>
-                            </Item.Extra>
-                        </Item.Content>
-                    </Item>
-                ))}
-            </Item.Group>
-        </Segment>
+        <Fragment>
+            <Button size='tiny' className='reload-button'><Icon name="sync" size='big'/></Button>
+            {groupedActivities.map(([group, activities]) => (
+                <Fragment key={group}>
+                    <Header sub color="teal" style={{fontSize: '16px'}}>
+                        {group}
+                    </Header>
+                    {activities.map(activity => (
+                        <ActivityListItem key={activity.id} activity={activity}/>
+                    ))}
+                </Fragment>
+            ))}
+        </Fragment>
     )
-}
+})
