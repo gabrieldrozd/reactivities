@@ -3,6 +3,7 @@ using Application.Features.Activities;
 using Application.Features.Activities.Commands;
 using Application.Features.Activities.Queries;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
