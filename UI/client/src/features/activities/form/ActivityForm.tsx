@@ -12,7 +12,7 @@ import CustomTextAreaInput from "../../../app/common/form/CustomTextAreaInput";
 import CustomSelectInput from "../../../app/common/form/CustomSelectInput";
 import {CategoryOptions} from "../../../app/common/options/categoryOptions";
 import CustomDateInput from "../../../app/common/form/CustomDateInput";
-import {Activity} from "../../../app/modules/activity";
+import {Activity} from "../../../app/models/activity";
 
 export default observer(function ActivityForm() {
     const history = useHistory();

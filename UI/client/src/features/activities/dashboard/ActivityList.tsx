@@ -10,7 +10,9 @@ export default observer(function ActivityList() {
 
     return (
         <Fragment>
-            <Button size='tiny' className='reload-button'><Icon name="sync" size='big'/></Button>
+            <Button size="tiny" className="reload-button" onClick={() => activityStore.loadActivities()}>
+                <Icon name="sync" size="big"/>
+            </Button>
             {groupedActivities.map(([group, activities]) => (
                 <Fragment key={group}>
                     <Header sub color="teal" style={{fontSize: '16px'}}>

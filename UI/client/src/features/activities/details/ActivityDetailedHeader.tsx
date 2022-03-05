@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react'
 import {Button, Header, Item, Segment, Image} from 'semantic-ui-react'
-import {Activity} from "../../../app/modules/activity";
+import {Activity} from "../../../app/models/activity";
 import {Link} from "react-router-dom";
 import {format} from "date-fns";
 

@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {Activity} from "../modules/activity";
+import {Activity} from "../models/activity";
 import agent from "../api/agent";
 import {format} from "date-fns";
 

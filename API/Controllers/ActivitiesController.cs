@@ -1,5 +1,4 @@
 ﻿using API.Controllers.Common;
-using Application.Features.Activities;
 using Application.Features.Activities.Commands;
 using Application.Features.Activities.Queries;
 using Domain;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+[AllowAnonymous]
 public class ActivitiesController : BaseApiController
 {
     [HttpGet]
