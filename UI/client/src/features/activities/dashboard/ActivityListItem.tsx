@@ -14,9 +14,16 @@ export default function ActivityListItem({activity}: Props) {
     return (
         <Segment.Group>
             <Segment>
+                {activity.isCancelled &&
+                    <Label attached='top' color='red'
+                           content='Cancelled' style={{textAlign: 'center'}}
+                    />
+                }
                 <Item.Group>
                     <Item>
-                        <Item.Image size="tiny" circular src="/assets/user.png"/>
+                        <Item.Image size="tiny" circular src="/assets/user.png"
+                                    style={{marginBottom: 3}}
+                        />
                         <Item.Content>
                             <Item.Header as={Link} to={`/activities/${activity.id}`}>
                                 {activity.title}
@@ -55,9 +62,9 @@ export default function ActivityListItem({activity}: Props) {
             <Segment clearing>
                 <span>{activity.description}</span>
                 <Button as={Link} to={`/activities/${activity.id}`}
-                color='teal'
-                floated='right'
-                content='View'/>
+                        color='teal'
+                        floated='right'
+                        content='View'/>
             </Segment>
         </Segment.Group>
     )
