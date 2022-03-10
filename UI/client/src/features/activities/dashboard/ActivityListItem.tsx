@@ -4,14 +4,14 @@ import {Link} from "react-router-dom";
 import {Activity} from "../../../app/models/activity";
 import {format} from "date-fns";
 import ActivityListItemAttendee from "./ActivityListItemAttendee";
+import * as style from './dashboardStyles';
+
 
 interface Props {
     activity: Activity;
 }
 
 export default function ActivityListItem({activity}: Props) {
-
-
 
     return (
         <Segment.Group>
@@ -29,10 +29,10 @@ export default function ActivityListItem({activity}: Props) {
                                 {activity.title}
                             </Item.Header>
                             <Item.Description>
-                                Hosted by
-                                <Link to={`/profiles/${activity.host?.userName}`}>
+                                Hosted by&nbsp;
+                                <style.UserLinkWithOnHover to={`/profiles/${activity.host?.userName}`}>
                                     {activity.host?.displayName}
-                                </Link>
+                                </style.UserLinkWithOnHover>
                             </Item.Description>
                             {activity.isHost && (
                                 <Item.Description>
